@@ -5,9 +5,10 @@ using UnityFrooxEngineRunner;
 namespace DisableSRAnipal;
 
 public partial class DisableSRAnipal : ResoniteMod {
+	internal const string VERSION_CONSTANT = "1.0.1";
 	public override string Name => "DisableSRAnipal";
 	public override string Author => "Delta";
-	public override string Version => "1.0.0";
+	public override string Version => "VERSION_CONSTANT";
 	public override string Link => "https://github.com/XDelta/DisableSRAnipal";
 
 	[AutoRegisterConfigKey]
