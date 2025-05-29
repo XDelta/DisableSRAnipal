@@ -24,17 +24,6 @@ public partial class DisableSRAnipal : ResoniteMod {
 		harmony.PatchAll();
 	}
 
-	[HarmonyPatch(typeof(LaunchOptions), "ForceSRAnipal", MethodType.Getter)]
-	private class LaunchOptionsForceSRAnipalPatch {
-		public static bool Prefix(ref bool __result) {
-			if (Config.GetValue(Enabled)) {
-				__result = false;
-				return false;
-			}
-			return true;
-		}
-	}
-
 	[HarmonyPatch(typeof(ViveProEyeTrackingDriver), "ShouldRegister")]
 	private class ViveProEyeTrackingDriverShouldRegisterPatch {
 		public static bool Prefix(ref bool __result) {
