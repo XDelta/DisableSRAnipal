@@ -1,6 +1,6 @@
 using HarmonyLib;
 using ResoniteModLoader;
-using UnityFrooxEngineRunner;
+using FrooxEngine;
 
 namespace DisableSRAnipal;
 
@@ -8,7 +8,7 @@ public partial class DisableSRAnipal : ResoniteMod {
 	internal const string VERSION_CONSTANT = "1.0.1";
 	public override string Name => "DisableSRAnipal";
 	public override string Author => "Delta";
-	public override string Version => "VERSION_CONSTANT";
+	public override string Version => VERSION_CONSTANT;
 	public override string Link => "https://github.com/XDelta/DisableSRAnipal";
 
 	[AutoRegisterConfigKey]
@@ -24,8 +24,8 @@ public partial class DisableSRAnipal : ResoniteMod {
 		harmony.PatchAll();
 	}
 
-	[HarmonyPatch(typeof(UnityLaunchOptions), "ForceSRAnipal", MethodType.Getter)]
-	private class UnityLaunchOptionsForceSRAnipalPatch {
+	[HarmonyPatch(typeof(LaunchOptions), "ForceSRAnipal", MethodType.Getter)]
+	private class LaunchOptionsForceSRAnipalPatch {
 		public static bool Prefix(ref bool __result) {
 			if (Config.GetValue(Enabled)) {
 				__result = false;
@@ -35,7 +35,7 @@ public partial class DisableSRAnipal : ResoniteMod {
 		}
 	}
 
-	[HarmonyPatch(typeof(ViveProEyeTrackingDriver), "ShouldRegister", MethodType.Getter)]
+	[HarmonyPatch(typeof(ViveProEyeTrackingDriver), "ShouldRegister")]
 	private class ViveProEyeTrackingDriverShouldRegisterPatch {
 		public static bool Prefix(ref bool __result) {
 			if (Config.GetValue(Enabled)) {
