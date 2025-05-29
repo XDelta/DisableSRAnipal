@@ -5,7 +5,7 @@ using FrooxEngine;
 namespace DisableSRAnipal;
 
 public partial class DisableSRAnipal : ResoniteMod {
-	internal const string VERSION_CONSTANT = "1.0.1";
+	internal const string VERSION_CONSTANT = "1.0.2";
 	public override string Name => "DisableSRAnipal";
 	public override string Author => "Delta";
 	public override string Version => VERSION_CONSTANT;
